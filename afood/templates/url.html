@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% include "afood/partials/_header.html" %}
+  <body style="background-color: #11111f">
+    <div
+      class="d-flex justify-content-center align-items-center vh-100 p-3 container"
+    >
+      <div class="w-100" style="max-width: 600px">
+        <div class="text-center mb-5 pb-5">
+          <img src="logo.png" alt="website logo" class="logo rounded-circle" />
+        </div>
+        <ul>
+          <li>
+            <div class="card p-3">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div>
+                            <h4>Name</h4>
+                            <p>Date</p>
+                            <p>Time</p>
+                            <p>Table numbers</p>
+                          </div>
+                          <button class="btn btn-danger"><i class="fa fa-trash"></i> Cancel this booking</button>
+                    </div>
+                    <div class="col-md-4 bg-light">
+                        <div class="container">
+                            <h4><b>Menu</b></h4>
+                            <p>Jollof rice </p>
+                            <p>Egusi and Fufu</p>
+                            <p>Beans and Plantain</p>
+                            <p>Suya Kebab</p>
+            
+                          </div>
+                    </div>
+                </div>
+             
+              
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {% include "afood/partials/_footer.html" %}
+  </body>
+</html>
