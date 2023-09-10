@@ -1,19 +1,51 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from afood.models import Booking
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
-def login(request):
-    return render(request, "afood/login.html", {})
-
+def loginView(request):
+    if request.method== 'GET':
+        return render(request, "afood/login.html", {})
+    elif request.method== 'POST':
+        
+        user= authenticate(
+            request, 
+            username= request.POST.get('username'), 
+            password=request.POST.get('password'))
+        if user:
+            login(request, user)
+            print("")
+            return redirect(request, '/booking-history')
+        else:
+            return render(request, "afood/login.html", {})
+            
 def register(request):
-    return render(request, "afood/register.html", {})
+    if(request.method=='POST'):
+        user=User.objects.create_user(
+            username=request.POST.get('username'),
+            email=request.POST.get('email'),
+            password=request.POST.get('password'),
+        )
+        user.save()
+        return redirect(request, '/')
+    else: 
+        return render(request, "afood/register.html", {})
 
 def addbooking(request):
-    return render(request, "afood/add-booking.html", {})
+    if(request.method=='POST'):
+        booking=Booking.objects.create(
+            date=request.POST.get('date'),
+            time=request.POST.get('time'),
+            mb_tables=request.POST.get('mb_tables'),
+        )
+    else: 
+        return render(request, "afood/add-booking.html", {})
 
 def bookinghistory(request):
-    return render(request, "afood/booking-history.html", {})
+    bookings=Booking.objects.all()
+    return render(request, "afood/booking-history.html", {'object': bookings})
 
 def cancelbooking(request):
     return

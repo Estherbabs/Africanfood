@@ -11,13 +11,13 @@
           <img src="{% static 'logo.png' %}" alt="website logo" class="logo rounded-circle" />
         </div>
         <ul>
+          {% for booking in object %}
           <li>
             <a href="#">
               <div
                 class="bg-white p-3 shadow-lg my-3 rounded me-5"
                 style="
                   position: relative;
-
                   width: 100%;
                   margin-left: auto;
                 "
@@ -26,17 +26,17 @@
                   <div>
                     <div>
                       <strong>Date; </strong>
-                      <span>16/08/23</span>
+                      <span>{{booking.date}}</span>
                     </div>
                     <div>
                       <strong>Time; </strong>
-                      <span>8:00am</span>
+                      <span>{{booking.time}}</span>
                     </div>
                   </div>
                   <div
                     class="bg-warning p-2 text-black text-center rounded shadow"
                   >
-                    <strong>3</strong>
+                    <strong>{{booking.mb_tables}}</strong>
                     <span class="d-block">Tables</span>
                   </div>
                 </div>
@@ -55,6 +55,7 @@
               </div>
             </a>
           </li>
+          {% endfor %}
         </ul>
       </div>
     </div>

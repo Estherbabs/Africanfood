@@ -8,10 +8,11 @@
         <div>
           <img src="{% static 'logo.png' %}" alt="website logo" class="logo">
             <div class="bg-white p-3 shadow my-3 rounded">
-                <form method="post" class="login-form">
+                <form method="post" class="login-form" action="{% url 'login' %}">
                     {% csrf_token %}
-                    {{form.as_p}}
-                    <button class="btn btn-warning">login</button>
+                    <input type="text" placeholder="Enter your username" class="form-control mb-3 shadow-sm" name="username">
+                    <input type="password" placeholder="******" class="form-control mb-3 shadow-sm" name="password">
+                    <button class="btn btn-warning" type="submit">login</button>
                     <strong>- or -</strong>
                     <a href="#">Register</a>   
                 </form>
