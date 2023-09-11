@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
-def loginView(request):
+def login(request):
     if request.method== 'GET':
         return render(request, "afood/login.html", {})
     elif request.method== 'POST':
