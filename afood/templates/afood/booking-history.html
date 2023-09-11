@@ -2,13 +2,21 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include "afood/partials/_header.html" %}
-  <body style="background-color: #11111f">
+  <body style="background-color: hsl(240, 29%, 9%)">
+    {% include "afood/partials/_nav.html" %}
     <div
       class="d-flex justify-content-center align-items-center vh-100 p-3 container"
     >
       <div class="w-100" style="max-width: 600px">
         <div class="text-center mb-5 pb-5">
-          <img src="{% static 'logo.png' %}" alt="website logo" class="logo rounded-circle" />
+          <img
+            src="{% static 'logo.png' %}"
+            alt="website logo"
+            class="logo rounded-circle"
+          />
+        </div>
+        <div class="d-flex justify-content-end">
+          <a href="{% url 'addbooking' %}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Make a booking</a>
         </div>
         <ul>
           {% for booking in object %}
@@ -16,11 +24,7 @@
             <a href="#">
               <div
                 class="bg-white p-3 shadow-lg my-3 rounded me-5"
-                style="
-                  position: relative;
-                  width: 100%;
-                  margin-left: auto;
-                "
+                style="position: relative; width: 100%; margin-left: auto"
               >
                 <div class="d-flex justify-content-between align-items-center">
                   <div>

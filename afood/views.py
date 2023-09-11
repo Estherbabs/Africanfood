@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
-def login(request):
+def loginView(request):
     if request.method== 'GET':
         return render(request, "afood/login.html", {})
     elif request.method== 'POST':
@@ -17,7 +17,7 @@ def login(request):
         if user:
             login(request, user)
             print("")
-            return redirect(request, '/booking-history')
+            return redirect('bookinghistory')
         else:
             return render(request, "afood/login.html", {})
             
@@ -29,9 +29,13 @@ def register(request):
             password=request.POST.get('password'),
         )
         user.save()
-        return redirect(request, '/')
+        return redirect('login')
     else: 
         return render(request, "afood/register.html", {})
+    
+def logoutView(request):
+    logout(request)
+    return redirect('login')
 
 def addbooking(request):
     if(request.method=='POST'):

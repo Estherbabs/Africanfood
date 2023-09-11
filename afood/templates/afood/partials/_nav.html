@@ -1,0 +1,5 @@
+<div class="d-flex justify-content-end text-white p-3">
+    {% if user.is_authenticated %}
+    <p><span>Welcome, {{ user.get_username }}.</span>&nbsp;<a href="{% url 'logout' %}" class="btn btn-warning btn-sm"> Logout</a></p>
+    {% endif %}
+  </div>

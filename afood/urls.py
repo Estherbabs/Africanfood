@@ -18,8 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 urlpatterns = [
-    path("login/", views.login, name="login"),
+    path("", views.loginView, name="login"),
     path("register/", views.register, name="register"),
+    path("logout/", views.logoutView, name="logout"),
     path("add-booking/", views.addbooking, name="addbooking"),
     path("booking-history/", views.bookinghistory, name="bookinghistory"),
     path("cancel-booking/", views.cancelbooking, name="cancelbooking"),

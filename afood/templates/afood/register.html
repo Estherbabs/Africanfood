@@ -8,11 +8,11 @@
         <div>
           <img src="{% static 'logo.png' %}" alt="website logo" class="logo">
             <div class="bg-white p-3 shadow my-3 rounded">
-                <form action="" class="login-form">
-                    <input type="text" placeholder="Full name" class="form-control mb-3 shadow-sm">
-                    <input type="text" placeholder="Phone number" class="form-control mb-3 shadow-sm">
-                    <input type="email" placeholder="Enter your email" class="form-control mb-3 shadow-sm">
-                    <input type="password" placeholder="******" class="form-control mb-3 shadow-sm">
+                <form action="{% url 'register' %}" class="login-form" method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder="username" class="form-control mb-3 shadow-sm" name="username">
+                    <input type="email" placeholder="Enter your email" class="form-control mb-3 shadow-sm" name="email">
+                    <input type="password" placeholder="******" class="form-control mb-3 shadow-sm" name="password">
                     <button class="btn btn-warning">Register</button>   
                 </form>
             </div>
