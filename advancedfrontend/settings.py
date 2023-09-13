@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l+3&w&x26j!*fjokexh@ylh%q)53)_0@fb%-6m)hr3*%)zj*n_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["africanfood.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
@@ -117,9 +117,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+os.path.join(BASE_DIR, 'static'),
+)
