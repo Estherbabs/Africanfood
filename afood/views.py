@@ -6,9 +6,9 @@ from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 def loginView(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('bookinghistory')
-        
+
     if request.method== 'GET':
         return render(request, "afood/login.html", {})
     elif request.method== 'POST':
