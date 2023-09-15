@@ -25,6 +25,8 @@ def loginView(request):
             return render(request, "afood/login.html", {})
             
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('bookinghistory')
     if(request.method=='POST'):
         user=User.objects.create_user(
             username=request.POST.get('username'),
@@ -41,6 +43,8 @@ def logoutView(request):
     return redirect('login')
 
 def addbooking(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     if(request.method=='POST'):
         booking=Booking.objects.create(
             date=request.POST.get('date'),
@@ -51,8 +55,12 @@ def addbooking(request):
         return render(request, "afood/add-booking.html", {})
 
 def bookinghistory(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     bookings=Booking.objects.all()
     return render(request, "afood/booking-history.html", {'object': bookings})
 
 def cancelbooking(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     return
