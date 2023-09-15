@@ -1,1 +1,1 @@
-web: gunicorn advancedfrontend.wsgi
+web: gunicorn advancedfrontend.wsgi 
