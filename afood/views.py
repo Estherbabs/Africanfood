@@ -50,7 +50,8 @@ def addbooking(request):
             booking=Booking.objects.create(
                 date=request.POST.get('date'),
                 time=request.POST.get('time'),
-                mb_tables=request.POST.get('mb_tables'),
+                user=request.user.id,
+                mb_tables=request.POST.get('mb_tables')
             )
             return redirect('bookinghistory')
         else: 
