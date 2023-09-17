@@ -57,7 +57,7 @@ def addbooking(request):
 def bookinghistory(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    bookings=Booking.objects.all()
+    bookings=Booking.objects.filter(user=request.user.id)
     return render(request, "afood/booking-history.html", {'object': bookings})
 
 def cancelbooking(request):
