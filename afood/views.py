@@ -45,19 +45,21 @@ def logoutView(request):
 def addbooking(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    if(request.method=='POST'):
-        booking=Booking.objects.create(
-            date=request.POST.get('date'),
-            time=request.POST.get('time'),
-            mb_tables=request.POST.get('mb_tables'),
-        )
-    else: 
-        return render(request, "afood/add-booking.html", {})
+    else:
+        if(request.method=='POST'):
+            booking=Booking.objects.create(
+                date=request.POST.get('date'),
+                time=request.POST.get('time'),
+                mb_tables=request.POST.get('mb_tables'),
+            )
+            return redirect('bookinghistory')
+        else: 
+            return render(request, "afood/add-booking.html", {})
 
 def bookinghistory(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    bookings=Booking.objects.filter(user=request.user.id)
+    bookings=Booking.objects.filter(user=request.user.id).order_by("-date")
     return render(request, "afood/booking-history.html", {'object': bookings})
 
 def cancelbooking(request):
